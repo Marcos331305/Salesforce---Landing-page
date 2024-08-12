@@ -14,3 +14,30 @@
 .ion-icon{
     font-size: 22px;
 }
+/* For Animation */
+#menubar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-width: 300px; /* Adjust based on your needs */
+    height: 100%;
+    background-color: white; /* Adjust as needed */
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    z-index: 1000; /* Ensure it's on top */
+    opacity: 0; /* Initially hidden */
+    visibility: hidden; /* Ensures that it doesn't block the UI when hidden */
+}
+
+#menubar.active {
+    transform: translateX(0);
+    opacity: 1; /* Fully visible */
+    visibility: visible;
+}
+
+#menubar.closing {
+    transform: translateX(-100%);
+    opacity: 0; /* Fade out during close */
+    visibility: visible; /* Keeps the element visible while it animates out */
+}

@@ -19,25 +19,28 @@ document.getElementById("toggler").addEventListener("click", function() {
   }
 });
 
+// MenuBar Toggling Animation
+document.getElementById("toggler").addEventListener("click", function () {
+  const menubar = document.getElementById("menubar");
 
-
-
-
-
-
-
-
-// // MenuBar Toggle Handling
-// var menubar = document.querySelector(".menubar");
-// function toggle(e) {
-//   if (e.name == "menu-outline") {
-//     e.name = "close-outline";
-//     menubar.style.display = "Block";
-//     // menubar.classList.replace('top-[150vw]','left-0');
-//     // console.log('checked')
-//   } else {
-//     e.name = "menu-outline";
-//     // menubar.classList.replace('top-57','left-0');
-//     menubar.style.display = "none";
-//   }
-// }
+  if (menubar.classList.contains("active")) {
+      // Trigger the slide-out animation
+      menubar.classList.remove("active");
+      menubar.classList.add("closing");
+      
+      setTimeout(() => {
+          // Remove the closing class after the animation is complete
+          menubar.classList.remove("closing");
+          menubar.classList.add("hidden");
+          menubar.style.visibility = "hidden";
+      }, 300); // Match this timeout with the CSS transition duration
+  } else {
+      // Show the menubar with slide-in animation
+      menubar.classList.remove("hidden");
+      menubar.style.visibility = "visible";
+      
+      setTimeout(() => {
+          menubar.classList.add("active");
+      }, 10); // Small delay to ensure the transition applies
+  }
+});
